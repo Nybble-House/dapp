@@ -11,6 +11,9 @@ ARG PORT=19006
 ENV PORT $PORT
 EXPOSE $PORT 19001 19002
 
+#Set default shell
+# SHELL ["/bin/bash", "-c" ]
+
 # install global packages
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH /home/node/.npm-global/bin:$PATH
@@ -23,7 +26,7 @@ USER node
 COPY ./react_native_app/package.json ./react_native_app/package-lock.json ./
 RUN yarn
 RUN npx expo-optimize
-RUN expo build:web --no-pwa 
+RUN ["/bin/bash", "-c" "expo build:web --no-pwa"] 
 
 #Server Environment
 FROM nginx:alpine
