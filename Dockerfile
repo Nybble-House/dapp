@@ -11,6 +11,9 @@ ARG PORT=19006
 ENV PORT $PORT
 EXPOSE $PORT 19001 19002
 
+#Set default shell
+SHELL ["/bin/bash", "-c"]
+
 # install global packages
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH /home/node/.npm-global/bin:$PATH
